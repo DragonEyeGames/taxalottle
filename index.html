@@ -6,14 +6,21 @@
     <title>Taxalottle</title>
 
     <style>
+
+        @font-face {
+            font-family:"Irish Grover";
+            src: url('fonts/IrishGrover-Regular.ttf')
+        }
+
         #logo {
             color:Blue;
             font-size:6.5em;
+            font-family: "Irish Grover";
             text-align:center;
             padding-top:0em;
             margin-top:0em;
             margin-bottom:0px;
-            -webkit-text-stroke: 2px black;
+            -webkit-text-stroke: .001px black;
         }
 
         p {
@@ -32,7 +39,7 @@
             gap: 15px;
         }
 
-        .grid-item {
+        .grid-button {
             #The Grid Layout;
             display:flex;
             justify-content:center;
@@ -41,14 +48,49 @@
             height:90px;
             border-style:solid;
             background-color:rgb(73, 165, 109);
-
+            border-radius:15px;
             #The Font Stuff;
             font-size:2.4em;
+
+            transition: transform 0.3s ease-in-out, background-color 0.1s ease;
+        }
+
+        .grid-button:hover {
+            background-color: #2ecc71;
+            transform: scale(1.01); /* Scales the element up by 5% */
         }
 
         a {
             text-decoration: none;
             color:black;
+        }
+
+        .taxalottle {
+            width:100px;
+            height:100px;
+            animation-name:rotate;
+            animation-duration:1s;
+            animation-iteration-count:infinite;
+            animation-timing-function: linear;
+        }
+
+        .img_left {
+            position:fixed;
+            top:20px;
+            left:100px;
+            animation-direction:alternate;
+        }
+
+        .img_right {
+            position:fixed;
+            top:20px;
+            right:100px;
+            animation-direction:alternate-reverse;
+        }
+
+        @keyframes rotate {
+            from {rotate:-10deg;}
+            to {rotate:10deg;}
         }
 
     </style>
@@ -57,11 +99,14 @@
     <h1 id="logo">Taxalottle</h1>
     <p>Come learn about me!</p>
 
+    <img class="taxalottle img_left" src="images/Taxalottle_No_BG.png" alt="Taxalottle Logo">
+    <img class="taxalottle img_right" src="images/Taxalottle_No_BG.png" alt="Taxalottle Logo">
+
     <div class="grid-container">
-        <div class="grid-item"><a href=pets.html>Dogs</a></div>
-        <div class="grid-item">Projects</div>
-        <div class="grid-item">Me</div>
-        <div class="grid-item">Goals</div>
+        <a href=pets.html class="grid-button">My Dogs</a>
+        <a href=pets.html class="grid-button">My Projects</a>
+        <a href=pets.html class="grid-button">All About Me</a>
+        <a href=pets.html class="grid-button">My Long-Term Goals</a>
     </div>
 
 </body>
