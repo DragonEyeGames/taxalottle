@@ -9,7 +9,7 @@
     font-family: "Irish Grover";
     text-align:center;
     padding-top:0em;
-    margin-top:13vh;
+    margin-top:0vh;
     margin-bottom:0px;
     -webkit-text-stroke: .001px black;
 }
@@ -38,12 +38,25 @@ p {
     color:black;
     margin:0px;
     padding:0px;
-    margin-bottom:4vh;
-    margin-top:1vh;
+
 }
 
 body {
     background-color:LightBlue;
+    margin:0;
+     /* 1. Ensure scrolling is enabled */
+    overflow-y: auto; 
+    
+    /* 2. Modern Standard (Firefox, modern Safari/Chrome) */
+    scrollbar-width: none; 
+    
+    /* 3. Legacy WebKit (Older Chrome, Safari, Opera, Edge) */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* 4. Legacy Internet Explorer and Old Edge */
+    -ms-overflow-style: none; 
 }
 
 .grid-container {
@@ -90,7 +103,7 @@ a {
     animation-duration:1s;
     animation-iteration-count:infinite;
     animation-timing-function: ease-in-out;
-    margin-top:10vh;
+    margin-top:0vh;
     margin-left:7vw;
     margin-right:7vw
 }
@@ -127,33 +140,25 @@ a {
 }
 
 .header {
-    width:100vw;
-    background-color:rgb(3, 3, 94);
-    border-style:solid;
-    border-width:7px;
-    height:10.5vh;
-    font-size:0px;
-    position:fixed;
-    left:-10px;
-    top:-10px;
+    width:100%;
 }
 
 .wave-wrap {
-  #overflow: ;
+  overflow: hidden;
    margin: 0;
 padding: 0;
 }
 .wave-track {
   display: flex;
   width: 200%;
-   margin: 0;
-  padding: 0;
   animation: scroll-waves 14s linear infinite;
+  margin:0px;
 }
 .wave-track svg {
   width: 50%; /* each svg = 100% of the visible viewport */
    margin: 0;
     padding: 0;
+    
 }
 @keyframes scroll-waves {
   from { transform: translateX(0); }
@@ -164,4 +169,56 @@ svg {
     display: inline;
     margin: 0;
     padding: 0;
+    
+}
+
+#ocean {
+    width:100%;
+    height:100vh;
+    background-color:#0693e3;
+}
+
+.short-header {
+    width: 100%;
+    /* Set this to whatever height you want (e.g., 40px, 50px, 60px) */
+    height: 15vh; 
+    overflow: hidden;
+  }
+
+  .short-header svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  18%      { rotate(5deg); }
+  22%      { transform: translateY(25px) rotate(5deg); }
+  40%      { transform: rotate(-5deg); }
+  60%      { transform: translateY(-10px) rotate(0deg); }
+}
+
+@keyframes moveAcross {
+  from { left: 0%; }
+  to { left: 85%; }
+}
+
+boat {
+  position: absolute; 
+  top: 22vw;
+  z-index: 0;
+  
+  /* Apply both animations */
+  animation: float 14s ease-in-out infinite, moveAcross linear;
+  animation-timeline: auto, scroll(root);
+}
+
+boat img {
+  width: 25vw;
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
 }
