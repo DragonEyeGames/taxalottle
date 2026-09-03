@@ -1,0 +1,121 @@
+@font-face {
+    font-family:"Irish Grover";
+    src: url('../fonts/IrishGrover-Regular.ttf')
+}
+
+#logo {
+    color:Blue;
+    font-size:0;
+    font-family: "Irish Grover";
+    text-align:center;
+    padding-top:0em;
+    margin-top:3vh;
+    margin-bottom:0px;
+    -webkit-text-stroke: .001px black;
+}
+
+#logo span {
+    display: inline-block;
+    font-size:6.5vw;
+    animation: wave 3s ease-in-out infinite;
+    -webkit-text-stroke: 5px black;
+}
+
+#logo span:nth-child(1)  { animation-delay: 0.0s; }
+#logo span:nth-child(2)  { animation-delay: 0.1s; }
+#logo span:nth-child(3)  { animation-delay: 0.2s; }
+#logo span:nth-child(4)  { animation-delay: 0.3s; }
+#logo span:nth-child(5)  { animation-delay: 0.4s; }
+#logo span:nth-child(6)  { animation-delay: 0.5s; }
+#logo span:nth-child(7)  { animation-delay: 0.6s; }
+#logo span:nth-child(8)  { animation-delay: 0.7s; }
+#logo span:nth-child(9)  { animation-delay: 0.8s; }
+#logo span:nth-child(10) { animation-delay: 0.9s; }
+
+p {
+    text-align:center;
+    font-size:2vw;
+    color:black;
+    margin:0px;
+    padding:0px;
+    margin-bottom:4vh;
+    margin-top:1vh;
+}
+
+body {
+    background-color:LightBlue;
+}
+
+.grid-container {
+    align-items:center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width:89vw;
+    padding-left:5vw;
+    padding-right:5vw;
+}
+
+.grid-button {
+    #The Grid Layout;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 20px;
+    height:20vh;
+    border-style:solid;
+    background-color:rgb(73, 165, 109);
+    border-radius:15px;
+    #The Font Stuff;
+    font-size:4vw;
+
+    transition: transform 0.3s ease-in-out, background-color 0.1s ease;
+}
+
+.grid-button:hover {
+    background-color: #2ecc71;
+    transform: scale(1.01); /* Scales the element up by 5% */
+}
+
+a {
+    text-decoration: none;
+    color:black;
+}
+
+.taxalottle {
+    width:10vw;
+    height:10vw;
+    animation-name:rotate;
+    animation-duration:1s;
+    animation-iteration-count:infinite;
+    animation-timing-function: ease-in-out;
+    padding-left:7vw;
+    padding-right:7vw
+}
+
+.img_left {
+    animation-direction:alternate;
+}
+
+.img_right {
+    animation-direction:alternate-reverse;
+}
+
+@keyframes rotate {
+    from {rotate:-10deg;}
+    to {rotate:10deg;}
+}
+
+@keyframes wave {
+    0%, 22.5%, 50% { transform: translateY(0); color:rgb(12, 203, 209)}
+    11.25% { transform: translateY(-15px); color:blue}
+
+    0%, 72.5%, 100% { transform: translateY(0); color:rgb(12, 203, 209)}
+    61.25% { transform: translateY(-15px); color:blue}
+}
+
+.taxalottle-wrapper { /* rename span or target it */
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
