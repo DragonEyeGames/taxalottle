@@ -18,7 +18,7 @@
     display: inline-block;
     font-size:6.5vw;
     animation: wave 3s ease-in-out infinite;
-    -webkit-text-stroke: 5px black;
+    -webkit-text-stroke: .25vw black;
 }
 
 #logo span:nth-child(1)  { animation-delay: 0.0s; }
@@ -57,7 +57,6 @@ body {
 }
 
 .grid-button {
-    #The Grid Layout;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -66,7 +65,9 @@ body {
     border-style:solid;
     background-color:rgb(73, 165, 109);
     border-radius:15px;
-    #The Font Stuff;
+}
+
+.grid-button span {
     font-size:4vw;
 
     transition: transform 0.3s ease-in-out, background-color 0.1s ease;
@@ -108,11 +109,15 @@ a {
 }
 
 @keyframes wave {
-    0%, 22.5%, 50% { transform: translateY(0); color:rgb(12, 203, 209)}
-    11.25% { transform: translateY(-15px); color:blue}
+    0%, 22.5%, 50% { transform: translateY(0);}
+    11.25% { transform: translateY(-15px);}
 
-    0%, 72.5%, 100% { transform: translateY(0); color:blue}
-    61.25% { transform: translateY(-15px); color:rgb(12, 203, 209)}
+    0%, 72.5%, 100% { transform: translateY(0);}
+    61.25% { transform: translateY(-15px);}
+
+    20.5%, 48% {color:rgb(12, 203, 209);}
+    9.25%, 70.5%, 98% {color:blue;}
+
 }
 
 .taxalottle-wrapper { /* rename span or target it */
@@ -122,8 +127,8 @@ a {
 }
 
 .header {
-    width:103vw;
-    background-color:rgb(0, 0, 77);
+    width:100vw;
+    background-color:rgb(3, 3, 94);
     border-style:solid;
     border-width:7px;
     height:10.5vh;
@@ -131,4 +136,32 @@ a {
     position:fixed;
     left:-10px;
     top:-10px;
+}
+
+.wave-wrap {
+  #overflow: ;
+   margin: 0;
+padding: 0;
+}
+.wave-track {
+  display: flex;
+  width: 200%;
+   margin: 0;
+  padding: 0;
+  animation: scroll-waves 14s linear infinite;
+}
+.wave-track svg {
+  width: 50%; /* each svg = 100% of the visible viewport */
+   margin: 0;
+    padding: 0;
+}
+@keyframes scroll-waves {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+svg {
+    display: inline;
+    margin: 0;
+    padding: 0;
 }
