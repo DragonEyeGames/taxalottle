@@ -214,12 +214,20 @@ html {
     width:50vw;
     /*height:30vw;*/
     position: relative;
-    top: 20vh;
-    left: 10vw;
     border-radius:2vw;
     border-style:solid;
     border-width:.5vw;
     line-height: 1.5;
+}
+
+#pokemon {
+    top: 14vh;
+    left: 10vw;
+}
+
+#k2 {
+    top:23vh;
+    right:11vw;
 }
 
 h1 {
@@ -256,7 +264,7 @@ bold {
 
 .sand {
     position:absolute;
-    bottom:-1vw;
+    bottom:0vw;
     left:0px;
     width:100vw;
     height:auto;
@@ -267,4 +275,27 @@ bold {
 
 body, html {
     overflow-x: hidden;
+}
+
+#sand {
+    height:10vw;
+    width:100%;
+    background-color:#e8e5b3;
+    display:flex;
+    justify-content:space-between
+}
+
+#sand p {
+    text-align:center;
+    font-family:atma;
+    margin:0px;
+    padding-top: 3vw;
+    color:#422304;
+    text-align:right;
+    padding-right:2vw;
+    padding-left:2vw;
+}
+
+italic {
+    font-style:italic;
 }
