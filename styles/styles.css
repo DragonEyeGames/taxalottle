@@ -114,6 +114,18 @@ a {
     margin-right:7vw
 }
 
+.game_mascot {
+    width:10vw;
+    height:10vw;
+    animation-name:rotate;
+    animation-duration:1s;
+    animation-iteration-count:infinite;
+    animation-timing-function: ease-in-out;
+    margin-top:0vh;
+    margin-left:5vw;
+    margin-right:5vw
+}
+
 .img_left {
     animation-direction:alternate;
 }
