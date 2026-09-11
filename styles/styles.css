@@ -1,28 +1,99 @@
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
+
 @font-face {
-    font-family:"Irish Grover";
-    src: url('../fonts/IrishGrover-Regular.ttf')
+    font-family: "Irish Grover";
+    src: url('../fonts/IrishGrover-Regular.ttf');
 }
 
 @font-face {
-    font-family:"Atma";
-    src: url('../fonts/Englebert-Regular.ttf')
+    font-family: "Atma";
+    src: url('../fonts/Englebert-Regular.ttf');
 }
 
+/* ==========================================================================
+   Base elements
+   ========================================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body, html {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: LightBlue;
+    margin: 0;
+    overflow-y: auto;
+
+    /* Hide scrollbar across browsers while keeping scroll enabled */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-family: atma;
+    font-size: 3vw;
+}
+
+p {
+    text-align: center;
+    font-size: 2vw;
+    color: black;
+    margin: 1vw;
+    padding: 0px;
+    font-family: atma;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+bold {
+    font-family: "Irish Grover";
+}
+
+italic {
+    font-style: italic;
+}
+
+svg {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+/* ==========================================================================
+   Logo
+   ========================================================================== */
 
 #logo {
-    color:Blue;
-    font-size:0;
+    color: Blue;
+    font-size: 0;
     font-family: "Irish Grover";
-    text-align:center;
-    padding-top:0em;
-    margin-top:0vh;
-    margin-bottom:0px;
+    text-align: center;
+    padding-top: 0em;
+    margin-top: 0vh;
+    margin-bottom: 0px;
     -webkit-text-stroke: .001px black;
 }
 
 #logo span {
     display: inline-block;
-    font-size:6.5vw;
+    font-size: 6.5vw;
     animation: wave 3s ease-in-out infinite;
     -webkit-text-stroke: .25vw black;
 }
@@ -38,198 +109,123 @@
 #logo span:nth-child(9)  { animation-delay: 0.8s; }
 #logo span:nth-child(10) { animation-delay: 0.9s; }
 
-p {
-    text-align:center;
-    font-size:2vw;
-    color:black;
-    margin:1vw;
-    padding:0px;
-    font-family:atma;
-}
-
-body {
-    background-color:LightBlue;
-    margin:0;
-     /* 1. Ensure scrolling is enabled */
-    overflow-y: auto; 
-    
-    /* 2. Modern Standard (Firefox, modern Safari/Chrome) */
-    scrollbar-width: none; 
-    
-    /* 3. Legacy WebKit (Older Chrome, Safari, Opera, Edge) */
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    
-    /* 4. Legacy Internet Explorer and Old Edge */
-    -ms-overflow-style: none; 
-}
-
-.grid-container {
-    align-items:center;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    width:89vw;
-    padding-left:5vw;
-    padding-right:5vw;
-}
-
-.grid-button {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding: 20px;
-    height:20vh;
-    border-style:solid;
-    background-color:rgb(73, 165, 109);
-    border-radius:15px;
-}
-
-.grid-button span {
-    font-size:4vw;
-
-    transition: transform 0.3s ease-in-out, background-color 0.1s ease;
-}
-
-.grid-button:hover {
-    background-color: #2ecc71;
-    transform: scale(1.01); /* Scales the element up by 5% */
-}
-
-a {
-    text-decoration: none;
-    color:black;
+.taxalottle-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .taxalottle {
-    width:10vw;
-    height:10vw;
-    animation-name:rotate;
-    animation-duration:1s;
-    animation-iteration-count:infinite;
+    width: 10vw;
+    height: 10vw;
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    margin-top:0vh;
-    margin-left:7vw;
-    margin-right:7vw
+    margin-top: 0vh;
+    margin-left: 7vw;
+    margin-right: 7vw;
 }
 
 .game_mascot {
-    width:10vw;
-    height:10vw;
-    animation-name:rotate;
-    animation-duration:1s;
-    animation-iteration-count:infinite;
+    width: 10vw;
+    height: 10vw;
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    margin-top:0vh;
-    margin-left:5vw;
-    margin-right:5vw
+    margin-top: 0vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
 .img_left {
-    animation-direction:alternate;
+    animation-direction: alternate;
 }
 
 .img_right {
-    animation-direction:alternate-reverse;
+    animation-direction: alternate-reverse;
 }
 
-@keyframes rotate {
-    from {rotate:-10deg;}
-    to {rotate:10deg;}
-}
-
-@keyframes wave {
-    0%, 22.5%, 50% { transform: translateY(0);}
-    11.25% { transform: translateY(-15px);}
-
-    0%, 72.5%, 100% { transform: translateY(0);}
-    61.25% { transform: translateY(-15px);}
-
-    20.5%, 48% {color:rgb(12, 203, 209);}
-    9.25%, 70.5%, 98% {color:blue;}
-
-}
-
-.taxalottle-wrapper { /* rename span or target it */
-    display: flex;
-    align-items: center;
-    justify-content:center;
-}
+/* ==========================================================================
+   Header / wave banner
+   ========================================================================== */
 
 .header {
-    width:100%;
-}
-
-.wave-wrap {
-  overflow: hidden;
-   margin: 0;
-padding: 0;
-}
-.wave-track {
-  display: flex;
-  width: 200%;
-  animation: scroll-waves 14s linear infinite;
-  margin:0px;
-}
-.wave-track svg {
-  width: 50%; /* each svg = 100% of the visible viewport */
-   margin: 0;
-    padding: 0;
-    
-}
-@keyframes scroll-waves {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-svg {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    
-}
-
-#sand_svg {
-  display: block; /* Removes the inline text line-height space underneath */
-  margin: 0;
-  padding: 0;
-}
-
-#ocean {
-    width:100%;
-    min-height:460vw;
-    background-color:#0693e3;
-    background-image: linear-gradient(to bottom, #0693e3 5%,  #0792dd 10%, #072c92);
-    position:relative;
+    width: 100%;
 }
 
 .short-header {
     width: 100%;
-    /* Set this to whatever height you want (e.g., 40px, 50px, 60px) */
-    height: 15vh; 
+    height: 15vh;
     overflow: hidden;
-  }
+}
 
-  .short-header svg {
+.short-header svg {
     width: 100%;
     height: 100%;
     display: block;
-  }
+}
 
-html {
-  scroll-behavior: smooth;
+.wave-wrap {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.wave-track {
+    display: flex;
+    width: 200%;
+    animation: scroll-waves 14s linear infinite;
+    margin: 0px;
+}
+
+.wave-track svg {
+    width: 50%; /* each svg = 100% of the visible viewport */
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   Ocean section / project cards
+   ========================================================================== */
+
+#ocean {
+    width: 100%;
+    min-height: 395vw;
+    background-color: #0693e3;
+    background-image: linear-gradient(to bottom, #0693e3 5%, #0792dd 10%, #072c92);
+    position: relative;
 }
 
 .project-card {
-    background-color:rgb(201, 201, 201);
-    width:50vw;
-    /*height:30vw;*/
+    background-color: rgb(201, 201, 201);
+    width: 50vw;
     position: absolute;
-    border-radius:2vw;
-    border-style:solid;
-    border-width:.5vw;
+    border-radius: 2vw;
+    border-style: solid;
+    border-width: .5vw;
     line-height: 1.5;
+}
+
+.project-card header {
+    text-align: center;
+    font-family: "Irish Grover";
+    font-size: 3.5vw;
+}
+
+.project-card p {
+    text-align: left;
+}
+
+.project-card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 7px;
+    border-radius: 15px;
+    width: 50%;
 }
 
 #pokemon {
@@ -238,101 +234,132 @@ html {
 }
 
 #k2 {
-    top:60vw;
-    right:11vw;
+    top: 60vw;
+    right: 11vw;
 }
 
 #jam {
-    top:120vw;
-    left:5vw;
+    top: 120vw;
+    left: 5vw;
 }
 
 #godot {
-    top:180vw;
-    right:7vw;
+    top: 180vw;
+    right: 7vw;
 }
 
 #magic {
-    top:250vw;
-    left:11vw;
-}
-
-#japanese {
-    top:325vw;
-    right:17vw;
+    top: 250vw;
+    left: 11vw;
 }
 
 #java {
-    top:395vw;
-    left:16vw;
+    top: 335vw;
+    left: 16vw;
 }
 
-h1 {
-    text-align:center;
-    font-family:atma;
-    font-size:3vw
-}
-
-.button{
-    background-color:#2ecc71;
-    padding:.3vw;
-    margin-top:.1vw;
-    margin-bottom:.5vw;
-    border-radius:.5vw;
-    border-style:solid;
-    border-width:.25vw;
+.button {
+    background-color: #2ecc71;
+    padding: .3vw;
+    margin-top: .1vw;
+    margin-bottom: .5vw;
+    border-radius: .5vw;
+    border-style: solid;
+    border-width: .25vw;
     display: inline-block;
 }
 
-bold {
-    /*font-size:2.3vw;*/
-    font-family:"Irish Grover"
-}
-
-.project-card header {
-    text-align:center;
-    font-family:"Irish Grover";
-    font-size:3.5vw
-}
-
-.project-card p {
-    text-align:left;
-}
+/* ==========================================================================
+   Sand footer
+   ========================================================================== */
 
 .sand {
-    position:absolute;
-    bottom:0vw;
-    left:0px;
-    width:100vw;
-    height:auto;
-    overflow:hidden;
+    position: absolute;
+    bottom: 0vw;
+    left: 0px;
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
 }
 
-
-
-body, html {
-    overflow-x: hidden;
+#sand_svg {
+    display: block; /* removes inline text line-height space underneath */
+    margin: 0;
+    padding: 0;
 }
 
 #sand {
-    height:10vw;
-    width:100%;
-    background-color:#e8e5b3;
-    display:flex;
-    justify-content:space-between
+    height: 10vw;
+    width: 100%;
+    background-color: #e8e5b3;
+    display: flex;
+    justify-content: space-between;
 }
 
 #sand p {
-    text-align:center;
-    font-family:atma;
-    margin:0px;
+    text-align: right;
+    font-family: atma;
+    margin: 0px;
     padding-top: 3vw;
-    color:#422304;
-    text-align:right;
-    padding-right:2vw;
-    padding-left:2vw;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    color: #422304;
 }
 
-italic {
-    font-style:italic;
+/* ==========================================================================
+   Grid nav buttons
+   ========================================================================== */
+
+.grid-container {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 89vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.grid-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 20vh;
+    border-style: solid;
+    background-color: rgb(73, 165, 109);
+    border-radius: 15px;
+}
+
+.grid-button span {
+    font-size: 4vw;
+    transition: transform 0.3s ease-in-out, background-color 0.1s ease;
+}
+
+.grid-button:hover {
+    background-color: #2ecc71;
+    transform: scale(1.01); /* scales the element up by 1% */
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes rotate {
+    from { rotate: -10deg; }
+    to   { rotate: 10deg; }
+}
+
+@keyframes scroll-waves {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+@keyframes wave {
+    0%, 22.5%, 50%          { transform: translateY(0); }
+    11.25%                  { transform: translateY(-15px); }
+    0%, 72.5%, 100%         { transform: translateY(0); }
+    61.25%                  { transform: translateY(-15px); }
+    20.5%, 48%              { color: rgb(12, 203, 209); }
+    9.25%, 70.5%, 98%       { color: blue; }
 }
