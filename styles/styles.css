@@ -444,7 +444,10 @@ svg {
 .tide-wet svg     { animation: roll-sand 5s ease-in-out infinite;}
 
 #beach {
+    box-sizing: border-box;
     margin:0px;
+    padding-left:1vw;
+    padding-right:1vw;
     width:100%;
     min-height:100vh;
     background-color: #e8e5b3;
@@ -454,4 +457,75 @@ svg {
 
 #beach p {
     text-wrap: balance;
+}
+
+#beach a {
+    display:block;
+    text-align:center;
+    background-color:rgb(54, 170, 54);
+    width:max-content;
+    padding:0;
+    margin:0 auto;
+    margin-top:2vw;
+    margin-bottom:1vw;
+    border-radius:1vw;
+    border:solid;
+    border-width:.3vw;
+}
+
+.sign{
+  position:absolute;
+  top:-7.1vw;
+  display:inline-block;
+  background:linear-gradient(180deg, #8a5a34, #6b4226);
+  color:#fdf2e0;
+  padding:.1vw 2vw;
+  border-radius:14px;
+  font-weight:700;
+  transform:rotate(-1deg);
+  box-shadow:
+    0 4px 0 #4a2d18,
+    0 8px 14px rgba(74,45,24,0.25);
+  margin-left:3vw;
+  margin-bottom:1vw;
+  border-style:solid;
+  border-color:black;
+}
+.sign::before, .sign::after{
+  content:"";
+  position:absolute;
+  width:1vw; height:1vw;
+  border-radius:50%;
+  background:#3a2312;
+  top:.7vw;
+}
+.sign::before{left:10px;}
+.sign::after{right:10px;}
+
+.sign p{
+    color:rgb(255, 251, 247);
+    font-size:3.5vw;
+}
+
+.beach-card{
+    position:relative;
+    box-sizing: border-box;
+    background-color:#f7f5d6;
+    width:100%;
+    padding:.5vw;
+    padding-top:1vw;
+    padding-bottom:1vw;
+    border-radius:3vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.beach-card img {
+    border-color:white;
+    border-radius:0px !important;
+    transform:rotate(1.5deg);    
+      box-shadow:
+    5px 5px 10px 5px #0000002c,
+    0 8px 14px rgba(74,45,24,0.25);
 }
