@@ -475,32 +475,22 @@ svg {
 
 .sign{
   position:absolute;
-  top:-7.1vw;
-  display:inline-block;
-  background:linear-gradient(180deg, #8a5a34, #6b4226);
+  top:1vw;
+  left:0;
+  display:block;
+  background-color:#83430e;
   color:#fdf2e0;
   padding:.1vw 2vw;
   border-radius:14px;
-  font-weight:700;
+  font-weight:600;
   transform:rotate(-1deg);
   box-shadow:
-    0 4px 0 #4a2d18,
-    0 8px 14px rgba(74,45,24,0.25);
+  0 4px 0px rgb(70, 38, 2);
   margin-left:3vw;
   margin-bottom:1vw;
   border-style:solid;
   border-color:black;
 }
-.sign::before, .sign::after{
-  content:"";
-  position:absolute;
-  width:1vw; height:1vw;
-  border-radius:50%;
-  background:#3a2312;
-  top:.7vw;
-}
-.sign::before{left:10px;}
-.sign::after{right:10px;}
 
 .sign p{
     color:rgb(255, 251, 247);
@@ -519,6 +509,8 @@ svg {
     display:flex;
     justify-content:center;
     align-items:center;
+    margin-top:2vw;
+    margin-bottom:2vw;
 }
 
 .beach-card img {
@@ -528,4 +520,20 @@ svg {
       box-shadow:
     5px 5px 10px 5px #0000002c,
     0 8px 14px rgba(74,45,24,0.25);
+}
+
+.sand-container {
+    margin-top:10vw;
+    margin-bottom:1vw;
+    display:flex;
+    gap: 3vw;
+}
+
+.sand-item {
+    background-color:#ecd09a;
+    height:20vw;
+    width:20vw;
+    border-radius:1vw;
+    margin:0px;
+    padding:0px;
 }
