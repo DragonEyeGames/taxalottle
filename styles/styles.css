@@ -511,9 +511,14 @@ svg {
     align-items:center;
     margin-top:2vw;
     margin-bottom:2vw;
+    
 }
 
-.beach-card img {
+.half {
+    width:48.5%;
+}
+
+.beach-card > img {
     border-color:white;
     border-radius:0px !important;
     transform:rotate(1.5deg);    
@@ -530,10 +535,26 @@ svg {
 }
 
 .sand-item {
-    background-color:#ecd09a;
+    background-color:#f3f1e6;
     height:20vw;
     width:20vw;
     border-radius:1vw;
+    border-style:solid;
     margin:0px;
     padding:0px;
+}
+
+.sand-item p {
+     margin-bottom:.5vw;
+}
+
+#switch {
+    border-style:none !important;
+    width:14vw !important;
+}
+
+.screenshot {
+    border-radius:0px !important;
+    border-width:.3vw !important;
+    width:12vw !important;
 }
