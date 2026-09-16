@@ -558,3 +558,16 @@ svg {
     border-width:.3vw !important;
     width:12vw !important;
 }
+
+canvas {
+    width:100%;
+    background:blue;
+    display:block;
+}
+
+#game-body {
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    image-rendering: pixelated;
+}
