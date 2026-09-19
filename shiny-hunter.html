@@ -88,19 +88,36 @@
         
         <div style="display:flex; justify-content:space-between">
             <div class="beach-card half">
-                <div><div class="sign"><p>Discord Webhook</p></div></div>
+                <div><div class="sign"><p>The Struggles</p></div></div>
                 <div style="margin-top:7.5vw">
-                <p>The biggest hurdle that I have had to overcome with this project is NXBT itself. While it is easy to set up as it is Bluetooth, it is inaccurate. Many inputs were getting dropped and other similar issues.</p>
-                <p>My fix for this was to add in a series of checks. Everytime something major is supposed to happen, the Pi double checks to make sure the screen is in the right spot.</p>
-                <p>This happens for making sure the encounter is loaded, the game reset, and the game is properly loading. This keeps us on track and avoids failing due to common problems.</p>
+                <p>By far the biggest issue with this project was the unreliability of NXBT itself. Because it has to go through Bluetooth, many inputs were being dropped.</p>
+                <p>To fix this, I put in a series of checks. If any of the below checks fail, it will recover and keep on crusing.</p>
+                <div style="display:flex">
+                    <div>
+                        <img style="width:13vw; height:8vw;" src="images/game.png">
+                        <p>Loading Screen</p>
+                    </div>
+                    <div>
+                        <img style="width:13vw; height:8vw;" src="images/white.png">
+                        <p>Loading Pokemon</p>
+                    </div>
+                    <div>
+                        <img style="width:13vw; height:8vw;" src="images/home.png">
+                        <p>Home Screen</p>
+                    </div>
+                </div>
                 </div>
             </div>
 
             <div class="beach-card half">
-                <div><div class="sign"><p>The Struggles</p></div></div>
+                <div><div class="sign"><p>Discord Webhook</p></div></div>
                 <div style="margin-top:0vw">
-                <p>One cool thing I did with this project is hook it up to discord. On the discord I have it hooked up to, it sends updates every reset, and then sends a picture if it finds a shiny!</p>
-                <p>This is very handy because it allows me to see what is going on while I am out and about. I can see if it is still running or if a shiny pokemon has been detected!</p>
+                <p style="margin-top:8vw;">I hooked my Shiny Hunter up to Discord!</p>
+                
+                <img src="images/discord.png">
+                
+                <p>This is a handy little feature that makes it easy to see how my Shiny Hunter is doing when I am out and about!</p>
+                <p>I can see if it is still running or if a Shiny has been found!</p>
                 </div>
             </div>
         </div>
