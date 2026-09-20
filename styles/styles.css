@@ -553,6 +553,11 @@ svg {
     width:14vw !important;
 }
 
+#pi {
+    border-style:none !important;
+    width:11vw !important;
+}
+
 .screenshot {
     border-radius:0px !important;
     border-width:.3vw !important;
