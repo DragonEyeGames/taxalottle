@@ -576,3 +576,14 @@ canvas {
     padding:0;
     image-rendering: pixelated;
 }
+
+#sand-svg {
+    position:relative;
+    z-index:2;
+    margin-top: -30vh;
+}
+
+#wave-svg {
+    position:relative;
+    z-index: 1;
+}
