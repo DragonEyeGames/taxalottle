@@ -1,5 +1,4 @@
 const waveElement = document.getElementById("wave");
-const sandElement = document.getElementById("sand-wave");
 
 let width = window.innerWidth;
 const height = 300; 
@@ -7,7 +6,7 @@ const baselineY = 150;
 
 const amplitude = 40;   
 const frequency = 0.004; 
-const segments = 5; // Increased segments for smoother noise detail    
+const segments = 500; // Increased segments for smoother noise detail    
 
 let time = 0;
 
@@ -21,13 +20,13 @@ function getWaveY(x, phase) {
   const mainWave = Math.sin(x * frequency + phase) * amplitude;
   
   // Noise Layer 1: Medium choppy waves moving twice as fast
-  const noise1 = Math.sin(x * (frequency * 2.5) - phase * 1.8) * (amplitude * 0.25);
+  const noise1 = Math.sin(x * (frequency * 2.5) - phase * .5) * (amplitude * 0.25);
   
   // Noise Layer 2: Fine surface ripples moving in the opposite direction
-  const noise2 = Math.cos(x * (frequency * 5.0) + phase * 3.2) * (amplitude * 0.1);
+  const noise2 = Math.cos(x * (frequency * 5.0) + phase * 3.2) * (amplitude * 0.05);
 
   // Combine everything together
-  return baselineY + mainWave + noise1 + noise2;
+  return baselineY + mainWave + noise1;// + noise2;
 }
 
 function buildWavePoints(phase) {
@@ -57,8 +56,6 @@ function animate() {
   time += 0.015; // Slower time step looks better with layered noise
   const newPath = buildWavePoints(time);
   waveElement.setAttribute("d", newPath);
-  const oldPath = buildWavePoints(time-.2);
-sandElement.setAttribute("d", oldPath);
   requestAnimationFrame(animate);
 }
 
