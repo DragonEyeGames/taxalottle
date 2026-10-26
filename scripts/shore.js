@@ -2,8 +2,9 @@ const waveElement = document.getElementById("wave");
 const sandElement = document.getElementById("sand-wave");
 
 let width = window.innerWidth;
-const height = 300; 
-const baselineY = 150; 
+const height = 400; 
+let baselineY = 150;
+let baselineTicks = 0;
 
 const amplitude = 40;   
 const frequency = 0.004; 
@@ -55,18 +56,46 @@ function buildWavePoints(phase) {
 
 let lastTime = 0
 let lastValue = -2
+let direction= -1
+
+
+
+const cycleDuration = 3000; // Milliseconds per full cycle
 
 function animate(currentTime) {
-  time += currentTime-lastTime; // Slower time step looks better with layered noise
-  lastTime=currentTime;
-  if(Math.floor(lastValue)!=Math.floor(time/1000)){
-    lastValue=time/1000
-    const newPath = buildWavePoints(Math.floor(time/2000));
+	const delta = currentTime - lastTime;
+	lastTime = currentTime;
+
+	time += delta;
+	baselineTicks += delta;
+
+	// Vertical movement
+	baselineY = Math.sin(
+		(baselineTicks - 500) * 2 * Math.PI / cycleDuration
+	) * 50 + 150;
+
+	// Keep choppiness synchronized
+	const phase = time / cycleDuration;
+
+	const newPath = buildWavePoints(Math.floor(phase));
+	//waveElement.setAttribute("d", newPath);
+
+	const oldPath = buildWavePoints(Math.floor(phase));
+	sandElement.setAttribute("d", oldPath);
+
+   if(Math.floor(lastValue)!=Math.floor(time/(cycleDuration/2))){
+    waveElement.style.display="none"
+    lastValue=time/(cycleDuration/2)
+    sandElement.style.fill = '#e8e5b3';
+    direction*=-1
+    if(direction==-1){
+      waveElement.style.display = "block"
+      sandElement.style.fill = '#948347';
+    }
     waveElement.setAttribute("d", newPath);
-    const oldPath = buildWavePoints(Math.floor(time/2000));
-    sandElement.setAttribute("d", oldPath);
   }
-  requestAnimationFrame(animate);
+
+	requestAnimationFrame(animate);
 }
 
 requestAnimationFrame(animate);
