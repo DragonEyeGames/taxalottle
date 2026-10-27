@@ -7,9 +7,9 @@ const height = 400;
 let baselineY = 150;
 let baselineTicks = 0;
 
-const amplitude = 40;   
+const amplitude = 30;   
 const frequency = 0.004; 
-const segments = 500; // Increased segments for smoother noise detail    
+const segments = 500; 
 
 let time = 0;
 
@@ -17,18 +17,17 @@ window.addEventListener('resize', () => {
   width = window.innerWidth;
 });
 
-// A function to get the current Y point with added noise layers
 function getWaveY(x, phase) {
-  // Main structural wave
+
   const mainWave = Math.sin(x * frequency + phase) * amplitude;
   
-  // Noise Layer 1: Medium choppy waves moving twice as fast
+
   const noise1 = Math.sin(x * (frequency * 2.5) - phase * .5) * (amplitude * 0.25);
   
-  // Noise Layer 2: Fine surface ripples moving in the opposite direction
+
   const noise2 = Math.cos(x * (frequency * 5.0) + phase * 3.2) * (amplitude * 0.05);
 
-  // Combine everything together
+
   return baselineY + mainWave + noise1;// + noise2;
 }
 
@@ -61,43 +60,37 @@ let direction= -1
 
 
 
-const cycleDuration = 3000; // Milliseconds per full cycle
+const cycleDuration = 5000;
 
 function animate(currentTime) {
+	// Update time
 	const delta = currentTime - lastTime;
 	lastTime = currentTime;
 
 	time += delta;
 	baselineTicks += delta;
 
-	// Vertical movement
+	const phase = time / cycleDuration;
+
 	baselineY = Math.sin(
 		(baselineTicks - 500) * 2 * Math.PI / cycleDuration
 	) * 50 + 110;
 
-	// Keep choppiness synchronized
-	const phase = time / cycleDuration;
-
 	const newPath = buildWavePoints(Math.floor(phase));
-	//waveElement.setAttribute("d", newPath);
+	// waveElement.setAttribute("d", newPath);
 
 	const oldPath = buildWavePoints(Math.floor(phase));
 	waveElement.setAttribute("d", oldPath);
 
-  const newPath2 = buildWavePoints(Math.floor(phase)*10);
-	waveElementTwo.setAttribute("d", newPath2);
+	baselineY = Math.sin(
+		(baselineTicks + 500) * 2 * Math.PI / cycleDuration
+	) * 50 + 110;
 
-   if(Math.floor(lastValue)!=Math.floor(time/(cycleDuration/2))){
-    sandElement.style.display="none"
-    lastValue=time/(cycleDuration/2)
-    //sandElement.style.fill = '#e8e5b3';
-    direction*=-1
-    if(direction==-1){
-      sandElement.style.display = "block"
-      //sandElement.style.fill = '#948347';
-    }
-    sandElement.setAttribute("d", newPath);
-  }
+	const newPath2 = buildWavePoints(
+		(Math.floor(phase - 0.5) + 10) * 10
+	);
+
+	waveElementTwo.setAttribute("d", newPath2);
 
 	requestAnimationFrame(animate);
 }
