@@ -1,4 +1,5 @@
 const waveElement = document.getElementById("wave");
+const waveElementTwo = document.getElementById("wave-2");
 const sandElement = document.getElementById("sand-wave");
 
 let width = window.innerWidth;
@@ -50,7 +51,7 @@ function buildWavePoints(phase) {
     pathData += ` C ${cpX1} ${cpY1}, ${cpX2} ${cpY2}, ${x} ${y}`;
   }
 
-  pathData += ` L ${width} ${height} L 0 ${height} Z`;
+  pathData += ` L ${width} 0 L 0 0 Z`;
   return pathData;
 }
 
@@ -72,7 +73,7 @@ function animate(currentTime) {
 	// Vertical movement
 	baselineY = Math.sin(
 		(baselineTicks - 500) * 2 * Math.PI / cycleDuration
-	) * 50 + 150;
+	) * 50 + 110;
 
 	// Keep choppiness synchronized
 	const phase = time / cycleDuration;
@@ -81,18 +82,21 @@ function animate(currentTime) {
 	//waveElement.setAttribute("d", newPath);
 
 	const oldPath = buildWavePoints(Math.floor(phase));
-	sandElement.setAttribute("d", oldPath);
+	waveElement.setAttribute("d", oldPath);
+
+  const newPath2 = buildWavePoints(Math.floor(phase)*10);
+	waveElementTwo.setAttribute("d", newPath2);
 
    if(Math.floor(lastValue)!=Math.floor(time/(cycleDuration/2))){
-    waveElement.style.display="none"
+    sandElement.style.display="none"
     lastValue=time/(cycleDuration/2)
-    sandElement.style.fill = '#e8e5b3';
+    //sandElement.style.fill = '#e8e5b3';
     direction*=-1
     if(direction==-1){
-      waveElement.style.display = "block"
-      sandElement.style.fill = '#948347';
+      sandElement.style.display = "block"
+      //sandElement.style.fill = '#948347';
     }
-    waveElement.setAttribute("d", newPath);
+    sandElement.setAttribute("d", newPath);
   }
 
 	requestAnimationFrame(animate);
