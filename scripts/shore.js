@@ -1,6 +1,7 @@
 const waveElement = document.getElementById("wave");
 const waveElementTwo = document.getElementById("wave-2");
 const sandElement = document.getElementById("sand-wave");
+const sandElementTwo = document.getElementById("sand-wave-2");
 
 let width = window.innerWidth;
 const height = 400; 
@@ -62,6 +63,8 @@ let direction= -1
 
 const cycleDuration = 5000;
 
+let previousPhase=0
+
 function animate(currentTime) {
 	// Update time
 	const delta = currentTime - lastTime;
@@ -69,30 +72,52 @@ function animate(currentTime) {
 
 	time += delta;
 	baselineTicks += delta;
-
 	const phase = time / cycleDuration;
 
 	baselineY = Math.sin(
-		(baselineTicks - 500) * 2 * Math.PI / cycleDuration
+		(baselineTicks - 1250) * 2 * Math.PI / cycleDuration
 	) * 50 + 110;
 
 	const newPath = buildWavePoints(Math.floor(phase));
-	// waveElement.setAttribute("d", newPath);
-
-	const oldPath = buildWavePoints(Math.floor(phase));
-	waveElement.setAttribute("d", oldPath);
+	waveElement.setAttribute("d", newPath);
 
 	baselineY = Math.sin(
-		(baselineTicks + 500) * 2 * Math.PI / cycleDuration
+		(baselineTicks + 1250) * 2 * Math.PI / cycleDuration
 	) * 50 + 110;
 
 	const newPath2 = buildWavePoints(
-		(Math.floor(phase - 0.5) + 10) * 10
+		(Math.floor(phase - 0.5) + 10) * 15
 	);
 
 	waveElementTwo.setAttribute("d", newPath2);
 
+	let phaseValue = (Math.floor(phase*2))/2
+
+	if(phaseValue>previousPhase){
+
+		previousPhase=phaseValue;
+
+		if(phaseValue % 1 === 0) {
+			triggerAnimation(sandElementTwo, newPath2)
+		} else if(phaseValue % .5 === 0) {
+			triggerAnimation(sandElement, newPath)
+		}
+	}
+
+	console.log(phaseValue)
+
 	requestAnimationFrame(animate);
+}
+
+function triggerAnimation(element, path) {
+	element.classList.remove("animate-out");
+
+	element.setAttribute("d", path);
+
+	// Force the browser to register the removed class
+	void element.getBoundingClientRect();
+
+	element.classList.add("animate-out");
 }
 
 requestAnimationFrame(animate);
