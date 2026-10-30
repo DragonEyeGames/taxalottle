@@ -2,17 +2,21 @@ const waveElement = document.getElementById("wave");
 const waveElementTwo = document.getElementById("wave-2");
 const sandElement = document.getElementById("sand-wave");
 const sandElementTwo = document.getElementById("sand-wave-2");
+const whiteElement = document.getElementById("white-wave");
+const whiteElementTwo = document.getElementById("white-wave-2");
 
 let width = window.innerWidth;
 const height = 400; 
 let baselineY = 150;
 let baselineTicks = 0;
 
-const amplitude = 30;   
-const frequency = 0.004; 
+const amplitude = 35;   
+const frequency = 0.005; 
 const segments = 500; 
 
 let time = 0;
+
+let first_frame = true
 
 window.addEventListener('resize', () => {
   width = window.innerWidth;
@@ -81,6 +85,10 @@ function animate(currentTime) {
 	const newPath = buildWavePoints(Math.floor(phase));
 	waveElement.setAttribute("d", newPath);
 
+	baselineY += 7
+	const whitePath = buildWavePoints(Math.floor(phase));
+	whiteElement.setAttribute("d", whitePath);
+
 	baselineY = Math.sin(
 		(baselineTicks + 1250) * 2 * Math.PI / cycleDuration
 	) * 50 + 110;
@@ -91,7 +99,19 @@ function animate(currentTime) {
 
 	waveElementTwo.setAttribute("d", newPath2);
 
+	baselineY += 7
+	const whitePathTwo = buildWavePoints(
+		(Math.floor(phase - 0.5) + 10) * 15
+	);
+	whiteElementTwo.setAttribute("d", whitePathTwo);
+	baselineY-=7
+
 	let phaseValue = (Math.floor(phase*2))/2
+
+	if(first_frame=true){
+		first_frame=false
+		triggerAnimation(sandElementTwo, newPath2)
+	}
 
 	if(phaseValue>previousPhase){
 
@@ -110,6 +130,7 @@ function animate(currentTime) {
 }
 
 function triggerAnimation(element, path) {
+	console.log("triggering")
 	element.classList.remove("animate-out");
 
 	element.setAttribute("d", path);

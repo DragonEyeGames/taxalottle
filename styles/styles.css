@@ -583,22 +583,23 @@ canvas {
 }
 
 .sand-svg {
-    z-index:1;
+    z-index:3;
     margin-top: 0;
 }
 
 .wave-svg {
     display:block;
-    z-index: 2;
+    z-index: 3;
 }
 
 #wave-svg {
     display:block;
+    z-index: 1;
 }
 
-.wave-svg-2 {
+#wave-svg-2 {
     display:block;
-    z-index: 2;
+    z-index: 1;
 }
 
 .wave-container {
@@ -615,6 +616,18 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+#white-svg {
+    display:block;
+    z-index: 2;
+    opacity:.8;
+}
+
+#white-svg-2 {
+    display:block;
+    z-index: 2;
+    opacity:.8;
 }
 
 @keyframes opacityShift {
