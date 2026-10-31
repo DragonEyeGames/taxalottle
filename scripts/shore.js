@@ -108,7 +108,7 @@ function animate(currentTime) {
 
 	let phaseValue = (Math.floor(phase*2))/2
 
-	if(first_frame=true){
+	if(first_frame==true){
 		first_frame=false
 		triggerAnimation(sandElementTwo, newPath2)
 	}
